@@ -1,0 +1,12 @@
+{
+    "framework": "jasmine",
+    "launch_in_dev": [
+        "phantomjs"
+    ],
+    "src_files": [
+        "src/js/LifeCell.js",
+        "src/js/LifeBoard.js",
+        "test/*.spec.js"
+    ]
+}
+
