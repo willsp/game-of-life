@@ -1,0 +1,21 @@
+.board {
+    font-family: 'Andale Mono', monospace;
+}
+
+.board span {
+    display: inline-block;
+    padding: .75em;
+}
+
+.game {
+    display: none;
+}
+
+.started .game {
+    display: block;
+}
+
+.started .initialize {
+    display: none;
+}
+

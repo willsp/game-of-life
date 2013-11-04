@@ -7,16 +7,27 @@
 </head>
 <body>
     <h1>The Game of Life</h1>
-    <section id="initialize">
-        <label class="size" for="size">
-            How big should the board be?
-            <input id="size" type="text">
+    <section class="initialize">
+        <p>How big should the board be?</p>
+        <label for="width">
+            Width:
+            <input id="width" type="text" inputmode="numeric" pattern="\d+">
         </label>
-        <div id="newBoard">
-        </div>
+        <label for="height">
+            Height:
+            <input id="height" type="text" inputmode="numeric" pattern="\d+">
+        </label>
+        <button id="create">Create Board</button>
     </section>
-    <section id="game">
-        <div id="board"></div>
+    <section class="game">
+        <div id="board" class="board"></div>
+        <button id="next">Next Generation</button>
+        <button id="reset">Start Over</button>
     </section>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/LifeCell.js"></script>
+    <script src="js/LifeBoard.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
