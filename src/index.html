@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="gameOfLife">
 <head>
     <meta charset="UTF-8">
     <title>The Game of Life</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="libs/angular.js"></script>
+    <script src="js/LifeCell.js"></script>
+    <script src="js/LifeBoard.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
-<body>
+<body ng-controller="GameOfLifeCtrl" class="{{board | activate}}">
     <h1>The Game of Life</h1>
     <section class="initialize">
         <p>How big should the board be?</p>
         <label for="width">
             Width:
-            <input id="width" type="text" inputmode="numeric" pattern="\d+">
+            <input id="width" type="text" inputmode="numeric" pattern="\d+" ng-model="width">
         </label>
         <label for="height">
             Height:
-            <input id="height" type="text" inputmode="numeric" pattern="\d+">
+            <input id="height" type="text" inputmode="numeric" pattern="\d+" ng-model="height">
         </label>
-        <button id="create">Create Board</button>
+        <button id="create" ng-click="createBoard()">Create Board</button>
     </section>
     <section class="game">
-        <div id="board" class="board"></div>
-        <button id="next">Next Generation</button>
-        <button id="reset">Start Over</button>
+    <div id="board" class="board">
+        <div ng-repeat="row in board.cells">
+            <span ng-repeat="cell in row" ng-click="toggleCell(cell)">{{cell.alive | transform}}</span>
+        </div>
+    </div>
+    <button id="next" ng-click="next()">Next Generation</button>
+    <button id="reset" ng-click="reset()">Start Over</button>
     </section>
-
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/LifeCell.js"></script>
-    <script src="js/LifeBoard.js"></script>
-    <script src="js/game.js"></script>
 </body>
 </html>

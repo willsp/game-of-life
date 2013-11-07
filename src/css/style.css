@@ -11,11 +11,11 @@
     display: none;
 }
 
-.started .game {
+.active .game {
     display: block;
 }
 
-.started .initialize {
+.active .initialize {
     display: none;
 }
 
