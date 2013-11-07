@@ -23,9 +23,13 @@
     }
 
     LifeBoard.prototype.getCell = function(x, y) {
-        if (!(x < 0 || x >= this.width) && !(y < 0 || y >= this.height)) {
-            return this.cells[y][x];
-        }
+        x = (x >= this.width || x < 0) ? Math.floor(x % this.width) : x;
+        x = (x < 0) ? parseInt(this.width, 10) + x : x;
+
+        y = (y >= this.height || y < 0) ? Math.floor(y % this.height) : y;
+        y = (y < 0) ? parseInt(this.height, 10) + y : y;
+
+        return this.cells[y][x];
     };
 
     LifeBoard.prototype._createCells = function() {
