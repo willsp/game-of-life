@@ -24,9 +24,10 @@
         <button id="create" ng-click="createBoard()">Create Board</button>
     </section>
     <section class="game">
+    <p>Click the cells to kill or bring them to life.</p>
     <div id="board" class="board">
         <div ng-repeat="row in board.cells">
-            <span ng-repeat="cell in row" ng-click="toggleCell(cell)">{{cell.alive | transform}}</span>
+            <span class="{{cell.alive | activate}}" ng-repeat="cell in row" ng-click="toggleCell(cell)">{{cell.alive | transform}}</span>
         </div>
     </div>
     <button id="next" ng-click="next()">Next Generation</button>

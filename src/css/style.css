@@ -1,10 +1,33 @@
+html {
+    background-color: #bada55;
+    text-align: center;
+}
+
+body {
+    background-color: #badaff;
+    display: inline-block;
+    margin: 0 auto;
+    max-width: 90%;
+    padding: 1em;
+}
+
+input {
+    width: 2em;
+}
+
 .board {
     font-family: 'Andale Mono', monospace;
 }
 
 .board span {
+    background-color: #EEEEEE;
+    cursor: pointer;
     display: inline-block;
     padding: .75em;
+}
+
+span.active {
+    background-color: #FFFFFF;
 }
 
 .game {
