@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="gameOfLife">
-<head>
-    <meta charset="UTF-8">
-    <title>The Game of Life</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="libs/angular.js"></script>
-    <script src="js/LifeCell.js"></script>
-    <script src="js/LifeBoard.js"></script>
-    <script src="js/controllers.js"></script>
-</head>
-<body ng-controller="GameOfLifeCtrl" class="{{board | activate}}">
-    <h1>The Game of Life</h1>
-    <section class="initialize">
-        <p>How big should the board be?</p>
-        <label for="width">
-            Width:
-            <input id="width" type="text" inputmode="numeric" pattern="\d+" ng-model="width">
-        </label>
-        <label for="height">
-            Height:
-            <input id="height" type="text" inputmode="numeric" pattern="\d+" ng-model="height">
-        </label>
-        <button id="create" ng-click="createBoard()">Create Board</button>
-    </section>
-    <section class="game">
-        <p>click the cells to kill or bring them to life.</p>
-        <div id="board" class="board">
-            <div ng-repeat="row in board.cells">
-                <span class="{{cell.alive | activate}}" ng-repeat="cell in row" ng-click="togglecell(cell)">{{cell.alive | transform}}</span>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Game of Life</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="libs/angular.js"></script>
+        <script src="js/LifeCell.js"></script>
+        <script src="js/LifeBoard.js"></script>
+        <script src="js/controllers.js"></script>
+    </head>
+    <body ng-controller="GameOfLifeCtrl" class="{{board | activate}}">
+        <h1>The Game of Life</h1>
+        <section class="initialize">
+            <p>How big should the board be?</p>
+            <label for="width">
+                Width:
+                <input id="width" type="text" inputmode="numeric" pattern="\d+" ng-model="width">
+            </label>
+            <label for="height">
+                Height:
+                <input id="height" type="text" inputmode="numeric" pattern="\d+" ng-model="height">
+            </label>
+            <button id="create" ng-click="createBoard()">Create Board</button>
+        </section>
+        <section class="game">
+            <p>Click the cells to kill or bring them to life.</p>
+            <div id="board" class="board">
+                <div ng-repeat="row in board.cells">
+                    <span class="{{cell.alive | activate}}" ng-repeat="cell in row" ng-click="toggleCell(cell)">{{cell.alive | transform}}</span>
+                </div>
             </div>
-        </div>
-        <button id="next" ng-click="next()">next generation</button>
-        <button id="reset" ng-click="reset()">start over</button>
-    </section>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            <button id="next" ng-click="next()">Next Generation</button>
+            <button id="reset" ng-click="reset()">Start Over</button>
+        </section>
 
-      ga('create', 'UA-52061402-4', 'willsp.github.io');
-      ga('send', 'pageview');
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    </script>
-</body>
+          ga('create', 'UA-52061402-4', 'willsp.github.io');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
 </html>
