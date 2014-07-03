@@ -3,16 +3,20 @@
 (function(global) {
     'use strict';
 
+    var dummyCell = new LifeCell();
+
     function LifeBoard(init) {
         if (init && init.width && init.height) {
             this.width = init.width;
             this.height = init.height;
+            this.wrap = init.wrap;
 
             this._createCells();
         } else if (init && init.cells) {
             var rows = init.cells;
             this.height = rows.length;
             this.width = rows[0].length;
+            this.wrap = init.wrap;
 
             this._createCells();
             this._initCells(rows);
@@ -23,11 +27,17 @@
     }
 
     LifeBoard.prototype.getCell = function(x, y) {
-        x = (x >= this.width || x < 0) ? Math.floor(x % this.width) : x;
-        x = (x < 0) ? parseInt(this.width, 10) + x : x;
+        if (this.wrap) {
+            x = (x >= this.width || x < 0) ? Math.floor(x % this.width) : x;
+            x = (x < 0) ? parseInt(this.width, 10) + x : x;
 
-        y = (y >= this.height || y < 0) ? Math.floor(y % this.height) : y;
-        y = (y < 0) ? parseInt(this.height, 10) + y : y;
+            y = (y >= this.height || y < 0) ? Math.floor(y % this.height) : y;
+            y = (y < 0) ? parseInt(this.height, 10) + y : y;
+        } else if (x < 0 || x >= this.width ||
+                   y < 0 || y >= this.height) {
+            dummyCell.alive = false;
+            return dummyCell;
+        }
 
         return this.cells[y][x];
     };

@@ -22,6 +22,9 @@
             <input id="height" type="text" inputmode="numeric" pattern="\d+" ng-model="height">
         </label>
         <button id="create" ng-click="createBoard()">Create Board</button>
+        <p>Or choose a pattern to start with...</p>
+        <button id="gun-pattern" ng-click="createPattern('gun')">Gun</button>
+        <button id="spark-pattern" ng-click="createPattern('spark')">Spark</button>
     </section>
     <section class="game">
     <p>Click the cells to kill or bring them to life.</p>
@@ -30,6 +33,8 @@
             <span class="{{cell.alive | activate}}" ng-repeat="cell in row" ng-click="toggleCell(cell)">{{cell.alive | transform}}</span>
         </div>
     </div>
+    <button id="start" ng-click="start()">Start</button>
+    <button id="stop" ng-click="stop()" disabled="disabled">Stop</button>
     <button id="next" ng-click="next()">Next Generation</button>
     <button id="reset" ng-click="reset()">Start Over</button>
     </section>
