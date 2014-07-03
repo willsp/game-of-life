@@ -22,6 +22,7 @@
     });
 
     gameOfLife.controller('GameOfLifeCtrl', function GameOfLifeCtrl($scope) {
+        $scope.generation = 0;
         $scope.width = '5';
         $scope.height = '5';
 
@@ -93,10 +94,12 @@
 
         $scope.next = function() {
             $scope.board.progress();
+            $scope.generation++;
         };
 
         $scope.reset = function() {
             $scope.board = null;
+            $scope.generation = 0;
         };
 
         $scope.start = function() {
@@ -104,7 +107,7 @@
             document.getElementById('start').disabled = true;
             $scope.interval = setInterval(function() {
                 $scope.$apply(function() {
-                    $scope.board.progress();
+                    $scope.next();
                 });
             }, 100);
         };
